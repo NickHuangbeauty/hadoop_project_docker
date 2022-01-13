@@ -1,4 +1,4 @@
-FROM centos8-jdk
+FROM ubuntu-jdk
 
 MAINTAINER Nick Huang
 
@@ -12,8 +12,11 @@ ENV PATH=$PATH:/root/protobuf/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:.
 
 
 # 1. Install OpenSSH, OpenSSL, bzip2-devel
-RUN yum install -y openssh openssh-server openssh-clients openssl openssl-devel bzip2-devel && \
-    yum clean all && \
+RUN apt-get install -y \
+	openssh-server \
+	openssh-client \
+	openssl && \
+    apt-get clean && \
     ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
@@ -24,8 +27,8 @@ RUN chmod 600 /root/.ssh/config && \
     chown root:root /root/.ssh/config
 
 # Install Protocol Buffer, Hadoop
-RUN wget 
-    bsdtar -zcvf hadoop-3.3.1.tar.gz /root/ && \
+RUN wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/247a42b93519bce794349a11e33fdcc0007ae389/source_hadoop_ecosystem/hadoop-3.3.1.tar.gz && \
+    bsdtar -zvxf hadoop-3.3.1.tar.gz -C /root/ && \
     mv /root/hadoop-3.3.1 $HADOOP_HOME && \
     rm -rf hadoop-3.3.1.tar.gz && \
     rm -rf $HADOOP_HOME/bin/*.cmd && \
@@ -34,8 +37,8 @@ RUN wget
     rm -rf $HADOOP_CONF_DIR/*.cmd && \
     rm -rf $HADOOP_CONF_DIR/*.template && \
     rm -rf $HADOOP_CONF_DIR/*.example && \
-    wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/1c9f5f45793a754ba900753098658e46efe32886/source_hadoop_ecosystem/protobuf-all-3.19.3.tar.gz && \
-    bsdtar -zcvf protobuf-all-3.19.2.tar.gz /root/ && \
+    wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/247a42b93519bce794349a11e33fdcc0007ae389/source_hadoop_ecosystem/protobuf-all-3.19.3.tar.gz && \
+    bsdtar -C /root/ -zvxf protobuf-all-3.19.3.tar.gz && \
     rm -rf protobuf-all-3.19.3.tar.gz
 
 # Copy env variables from config/other/bashrc

@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM ubuntu:latest
 
 MAINTAINER Nick Huang
 
@@ -10,9 +10,13 @@ ENV PATH=$PATH:$JAVA_HOME/bin:$PATH
 
 
 # Install OpenJDK
-RUN yum update -y && \
-    yum install -y java-1.8.0-openjdk-devel wget vim bsdtar&& \
-    yum clean all && \
+RUN apt-get update && \
+    apt-get install -y \
+	openjdk-8-jre \ 
+	wget \
+	vim \
+	libarchive-tools && \
+    apt-get clean && \
     cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 
 CMD ["/bin/bash"]
