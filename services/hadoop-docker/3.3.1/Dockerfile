@@ -24,7 +24,7 @@ RUN chmod 600 /root/.ssh/config && \
     chown root:root /root/.ssh/config
 
 # Install Protocol Buffer, Hadoop
-RUN wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/1c9f5f45793a754ba900753098658e46efe32886/source_hadoop_ecosystem/hadoop-3.3.1.tar.gz && \
+RUN wget 
     bsdtar -zcvf hadoop-3.3.1.tar.gz /root/ && \
     mv /root/hadoop-3.3.1 $HADOOP_HOME && \
     rm -rf hadoop-3.3.1.tar.gz && \
