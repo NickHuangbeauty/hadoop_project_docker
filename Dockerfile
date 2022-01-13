@@ -11,7 +11,7 @@ ENV PATH=$PATH:$JAVA_HOME/bin:$PATH
 
 # Install OpenJDK
 RUN yum update -y && \
-    yum install -y java-1.8.0-openjdk-devel wget && \
+    yum install -y java-1.8.0-openjdk-devel wget tar vim bzip2 && \
     yum clean all && \
     cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 

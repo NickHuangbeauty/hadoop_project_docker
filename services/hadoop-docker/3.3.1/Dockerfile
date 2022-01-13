@@ -24,17 +24,17 @@ RUN chmod 600 /root/.ssh/config && \
     chown root:root /root/.ssh/config
 
 # Install Protocol Buffer, Hadoop
-RUN wget https://github.com/NickHuangbeauty/hadoop_project_docker/source_hadoop_ecosystem/hadoop-3.3.1.tar.gz && \
-    tar -xzvf hadoop-3.3.1.tar.gz -C /root/ && \
-    mv /root/hadoop-3.3.1 $HADOOP_HOME && \
-    rm -rf hadoop-3.3.1.tar.gz && \
-    rm -rf $HADOOP_HOME/bin/*.cmd && \
-    rm -rf $HADOOP_HOME/sbin/*.cmd && \
-    rm -rf $HADOOP_HOME/sbin/*all* && \
-    rm -rf $HADOOP_CONF_DIR/*.cmd && \
-    rm -rf $HADOOP_CONF_DIR/*.template && \
-    rm -rf $HADOOP_CONF_DIR/*.example && \
-    wget https://github.com/NickHuangbeauty/hadoop_project_docker/source_hadoop_ecosystem/protobuf-all-3.19.2.tar.gz && \
+# RUN wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/93ff0b156191f2df7d1a683128da86f84e5778d0/source_hadoop_ecosystem/hadoop-3.3.1.tar.gz && \
+#    tar -xvf hadoop-3.3.1.tar.gz -C /root/ && \
+#    mv /root/hadoop-3.3.1 $HADOOP_HOME && \
+#    rm -rf hadoop-3.3.1.tar.gz && \
+#    rm -rf $HADOOP_HOME/bin/*.cmd && \
+#    rm -rf $HADOOP_HOME/sbin/*.cmd && \
+#    rm -rf $HADOOP_HOME/sbin/*all* && \
+#    rm -rf $HADOOP_CONF_DIR/*.cmd && \
+#    rm -rf $HADOOP_CONF_DIR/*.template && \
+#    rm -rf $HADOOP_CONF_DIR/*.example && \
+  RUN wget --no-check-certificate --no-cookies --header "Cookie: protobuflicense=accept-securebackup-cookie" https://github.com/NickHuangbeauty/hadoop_project_docker/blob/93ff0b156191f2df7d1a683128da86f84e5778d0/source_hadoop_ecosystem/protobuf-all-3.19.2.tar.gz && \
     tar -xzvf protobuf-all-3.19.2.tar.gz -C /root/ && \
     rm -rf protobuf-all-3.19.2.tar.gz
 
