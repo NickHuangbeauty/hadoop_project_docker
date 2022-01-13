@@ -1,2 +1,0 @@
-source_hadoop_ecosystem/hadoop-3.3.1.tar.gz filter=lfs diff=lfs merge=lfs -text
-source_hadoop_ecosystem/protobuf-all-3.19.3.tar.gz filter=lfs diff=lfs merge=lfs -text
