@@ -27,8 +27,8 @@ RUN chmod 600 /root/.ssh/config && \
     chown root:root /root/.ssh/config
 
 # Install Protocol Buffer, Hadoop
-RUN wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/247a42b93519bce794349a11e33fdcc0007ae389/source_hadoop_ecosystem/hadoop-3.3.1.tar.gz && \
-    bsdtar -zvxf hadoop-3.3.1.tar.gz -C /root/ && \
+RUN curl https://github.com/NickHuangbeauty/hadoop_project_docker/blob/14c552715c3998097b40b9bdbb9e0c3c804c5ce3/source_hadoop_ecosystem/hadoop-3.3.1.tar.gz && \
+    tar -xvf hadoop-3.3.1.tar.gz -C /root/ && \
     mv /root/hadoop-3.3.1 $HADOOP_HOME && \
     rm -rf hadoop-3.3.1.tar.gz && \
     rm -rf $HADOOP_HOME/bin/*.cmd && \
@@ -37,8 +37,8 @@ RUN wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/247a42b93
     rm -rf $HADOOP_CONF_DIR/*.cmd && \
     rm -rf $HADOOP_CONF_DIR/*.template && \
     rm -rf $HADOOP_CONF_DIR/*.example && \
-    wget https://github.com/NickHuangbeauty/hadoop_project_docker/blob/247a42b93519bce794349a11e33fdcc0007ae389/source_hadoop_ecosystem/protobuf-all-3.19.3.tar.gz && \
-    bsdtar -C /root/ -zvxf protobuf-all-3.19.3.tar.gz && \
+    curl https://github.com/NickHuangbeauty/hadoop_project_docker/blob/14c552715c3998097b40b9bdbb9e0c3c804c5ce3/source_hadoop_ecosystem/protobuf-all-3.19.3.tar.gz && \
+    tar -C /root/ -xvf protobuf-all-3.19.3.tar.gz && \
     rm -rf protobuf-all-3.19.3.tar.gz
 
 # Copy env variables from config/other/bashrc

@@ -13,7 +13,7 @@ ENV PATH=$PATH:$JAVA_HOME/bin:$PATH
 RUN apt-get update && \
     apt-get install -y \
 	openjdk-8-jre \ 
-	wget \
+	curl \
 	vim \
 	libarchive-tools && \
     apt-get clean && \
